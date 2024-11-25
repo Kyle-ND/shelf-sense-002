@@ -23,7 +23,6 @@ class TestLibrarySystem(unittest.TestCase):
             os.remove(self.test_db)
 
     def test_add_book(self):
-        self.setUp()
         """
         Test adding a new book to the library.
         """
@@ -33,10 +32,9 @@ class TestLibrarySystem(unittest.TestCase):
             content = f.read()
             
         self.assertIn("1984,George Orwell", content)
-        self.tearDown()
+
         
     def test_search_book(self):
-        self.setUp()
         """
         Test searching for a book in the library.
         """
@@ -45,10 +43,8 @@ class TestLibrarySystem(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(result['title'], "1984")
         self.assertEqual(result['author'], "George Orwell")
-        self.tearDown()
         
     def test_list_books(self):
-        self.setUp()
         """
         Test listing all books in the library.
         """
@@ -58,6 +54,6 @@ class TestLibrarySystem(unittest.TestCase):
         self.assertEqual(len(books), 2)
         self.assertEqual(books[0]['title'], "1984")
         self.assertEqual(books[1]['title'], "To Kill a Mockingbird")
-        self.tearDown()
+
 if __name__ == "__main__":
     unittest.main()

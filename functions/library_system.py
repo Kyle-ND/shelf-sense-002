@@ -54,9 +54,10 @@ def list_books():
     with open(DATABASE_FILE,"r") as db:
         lines = db.readlines()
         for line in lines:
-            t,n = line.split(",")
-            if t!="Title" and n!="Auther":
-                books.append({"title":f"{t}","author":f"{n[:-1]}"})
+            if "," in line:
+                t,n = line.split(",")
+                if t!="Title" and n!="Auther":
+                    books.append({"title":f"{t}","author":f"{n}"})
             
     return books
         
