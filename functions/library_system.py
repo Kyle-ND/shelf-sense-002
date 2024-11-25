@@ -1,7 +1,6 @@
 DATABASE_FILE = "./database/books.txt"
 
 DATABASE_FILE= "test_books.txt"
-
 def initialize_database():
     """
     Initialize the database file if it doesn't exist.
@@ -36,9 +35,10 @@ def search_book(title):
         content = db.readlines()
         
         for line in content:
-            t,n = line.split(",")
-            if title == t:
-                return {"title":f"{title}","author":f"{n[:-1]}"}
+            if "," in line:
+                t,n = line.split(",")
+                if title == t:
+                    return {"title":f"{title}","author":f"{n}"}
             
     return None
     # TODO: Implement logic to search for a book in the database file
