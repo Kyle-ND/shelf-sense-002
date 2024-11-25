@@ -27,10 +27,13 @@ class TestLibrarySystem(unittest.TestCase):
         Test adding a new book to the library.
         """
         add_book("1984", "George Orwell")
+        
         with open(self.test_db, 'r') as f:
             content = f.read()
+            
         self.assertIn("1984,George Orwell", content)
 
+        
     def test_search_book(self):
         """
         Test searching for a book in the library.
@@ -40,7 +43,7 @@ class TestLibrarySystem(unittest.TestCase):
         self.assertIsNotNone(result)
         self.assertEqual(result['title'], "1984")
         self.assertEqual(result['author'], "George Orwell")
-
+        
     def test_list_books(self):
         """
         Test listing all books in the library.

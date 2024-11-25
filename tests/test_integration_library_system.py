@@ -2,6 +2,7 @@ import subprocess
 import unittest
 import os
 from functions.library_system import DATABASE_FILE
+import main
 
 class TestIntegrationLibrarySystem(unittest.TestCase):
     def setUp(self):
@@ -28,7 +29,7 @@ class TestIntegrationLibrarySystem(unittest.TestCase):
         :return: The output of the script.
         """
         process = subprocess.Popen(
-            ["python", "main.py"],
+            ["python3", "main.py"],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -38,6 +39,7 @@ class TestIntegrationLibrarySystem(unittest.TestCase):
         return output
 
     def test_add_and_list_books(self):
+        
         """
         Test adding books and listing them.
         """
