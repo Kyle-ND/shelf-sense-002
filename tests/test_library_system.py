@@ -23,14 +23,18 @@ class TestLibrarySystem(unittest.TestCase):
             os.remove(self.test_db)
 
     def test_add_book(self):
+        self.setUp()
         """
         Test adding a new book to the library.
         """
         add_book("1984", "George Orwell")
+        
         with open(self.test_db, 'r') as f:
             content = f.read()
+            
         self.assertIn("1984,George Orwell", content)
-
+        self.tearDown()
+        
     def test_search_book(self):
         """
         Test searching for a book in the library.
